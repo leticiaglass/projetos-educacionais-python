@@ -1,0 +1,35 @@
+# Definição da váriavel 'assunto'
+
+assunto = "Movimento do Projétil"
+assunto # Para sabermos o conteúdo da variável 'assunto'
+'Movimento do Projétil'
+print(assunto) # Para imprimir na tela o conteúdo da variável
+Movimento do Projétil
+
+# Definindo os dados do problema
+
+g, alc, alt = 9.8, 40, 5    # onde g é a aceleração gravitacional em m/s², alc é o alcance do projétil em metros e alt é a altura do projétil em metros.
+
+# Para verificação, imprimimos os valores das variáveis a seguir
+print(g)
+9.8
+print(alc)
+40
+print(alt)
+5
+# Escrevemos agora cada uma das variáveis que são incógnitas como uma equação que retornará seu valor numérico
+
+v0y = (2 * alt * g) ** (1/2) # torricelli vertical: vy² = v0y² + 2a*dt
+tv = 2 * v0y / g    # eq. horaria de movimento vertical em t = tv/2: vy = v0y + at
+v0x = alc / tv  # equação horaria de movimento horizontal: x = v0x * t
+
+# A ordem das equações importa, pois resolvemos um sistema de três equações e três incognitas, onde a próxima eq. depende do resultado da anterior (e.g., tv = f(g, v0y)).
+
+# Abaixo, os valores numéricos das incógnitas definidas anteriormente
+ 
+print(v0y, "é a velocidade vertical inicial em m/s, armazenada numa variável do tipo float")
+9.899494936611665 é a velocidade vertical inicial em m/s, armazenada numa variável do tipo float
+print(tv, "é o tempo de voo em segundos (s), armazenado numa variavel do tipo float")
+2.020305089104421 é o tempo de voo em segundos (s), armazenado numa variavel do tipo float
+print(v0x, "é a velocidade horizontal inicial em m/s, armazenada numa variável do tipo float (de ponto flutuante)")
+19.798989873223334 é a velocidade horizontal inicial em m/s, armazenada numa variável do tipo float (de ponto flutuante)

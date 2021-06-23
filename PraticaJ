@@ -1,0 +1,42 @@
+#Importando funções:
+from visual import *
+from random import *
+
+#Configuração da janela que mostrará a cena(área de desenho):
+scene = display(title='Queda Livre com "Arraste"(perda de energia cinética ao bater no chão):', x=0, y=0, width=650, height=600,center=(0,0,0), background=(0,0,0))
+
+#Criando caixa(onde a bola quiqua):
+base=box(pos=(0,-130,0),size=(200,10,200),color=color.green,opacity=0.8)
+
+#Criando bola(esfera que será solta):
+esfera=sphere(pos=(0,130,0),radius=20,color=color.white,opacity=0.5)
+
+#Criando a seta que indica a velocidade da esfera durante o movimento:
+esfera.veloc=vector(0,0,0)
+vetor=arrow(pos=esfera.pos,axis=esfera.veloc/10,color=color.red,shaftwidth=3,headwidth=3,headlength=3)
+
+#Aceleração da gravidade, em cm/s²:
+g=-980
+#Intervalo:
+dt=0.007
+#Sem dimensionamento automático(intervalo definido):
+scene.autoscale=False
+
+#Perda de energia cinética ao quiquar, em %:
+perda=0.2
+
+tf = 10 # define o tempo final para a simulação
+
+#Criando laço:
+#while True:
+for _ in range(0, int(tf/dt)):
+    esfera.veloc.y+=g*dt
+    rate(100)
+    if esfera.pos.y<-112:
+        esfera.pos.y=-112
+        vetor.pos.y=-112
+        esfera.veloc.y=-(1.-perda)*esfera.veloc.y
+    esfera.pos+=esfera.veloc*dt
+    vetor.axis=esfera.veloc/10
+    vetor.pos+=esfera.veloc*dt
+
